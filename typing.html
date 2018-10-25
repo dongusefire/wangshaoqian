@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>自动打字</title>
+    <style>
+    	html {
+    		height: 100%;
+    	}
+    	body {
+    		background:linear-gradient(#eb8392, #f8d2d7);
+    		height: 100%;
+    	}
+    	.main {
+    		margin:0 auto;
+    		width: 600px;
+    		padding: 12px 20px;
+    		color: #ffffff;
+    		/*text-align: center;*/
+    	}
+    	.main h2 {
+    		text-align: center;
+    	}
+    	.main .img {
+    		display: none;
+    		
+    	}
+    	.main .name{
+    		text-align: right;
+    		display: none;
+    		margin-top: 12px;
+    	}
+    	.main .time {
+    		text-align: right;
+    		margin-top: 12px;
+    		display: none;
+    	}
+    </style>
+</head>
+<body>
+	<div class="main">
+		<h2>请辞信</h2>
+		<div id='auto'></div>
+		<div style="text-align: center;" class="img"><img src="img/bye.gif" class="" alt="" /></div>
+		<div class="name">By——怀揣少女心的"王·司机·少乾"</div>
+		<div class="time"></div>
+	</div>
+<script>
+    var str = '尊敬的老板，在您麾下我已浴血奋战一年有余。为了事业我是披肝沥胆，不辞辛劳，本着一直奉献社会，追随老板的意志一直努力。今日猛然醒悟，我已厌倦了城市的喧嚣，过够了失去自我的日子；吾还有很多没有完成的事情要去做，比如：去看看外面的世界，追随真正的自我。。。还有让我免去奋斗辛劳的富婆。说这么多，其实就是想跟您道个别，我要追随凛冽的西北风去喽！！！';
+    var i = 0;
+    function auto(){
+        var divTyping = document.getElementById('auto');
+        if (i <= str.length) {
+            divTyping.innerHTML = str.slice(0, i++) ;
+            setTimeout('auto()', 100);//递归调用
+        }
+    }
+    auto();
+    function imgAuto(){
+    	var Img = document.getElementsByClassName("img");
+    	var namebox = document.getElementsByClassName("name");
+    	var timebox = document.getElementsByClassName("time");
+    	console.log(Img)
+    	Img[0].style.display = 'block';
+    	timebox[0].style.display = "block";
+    	namebox[0].style.display = "block";
+    }
+    setTimeout('imgAuto()',20000);
+    
+    function time(){
+    	var time = new Date();
+    	var year = time.getFullYear();
+    	var month = time.getMonth()+1;
+    	var day = time.getDate();
+    	if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (day >= 0 && day <= 9) {
+            day = "0" + day;
+        }
+    	var time = year+"."+month+"."+day;
+    	var timebox = document.getElementsByClassName("time");
+    	timebox[0].innerHTML = time;
+    }
+    time();
+</script>
+</body>
+</html>
