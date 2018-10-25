@@ -40,14 +40,15 @@
 <body>
 	<div class="main">
 		<h2>请辞信</h2>
-		<div id='auto'></div>
+		<div id='auto'>123</div>
 		<div style="text-align: center;" class="img"><img src="img/bye.gif" class="" alt="" /></div>
 		<div class="name">By——怀揣少女心的"王·司机·少乾"</div>
 		<div class="time"></div>
 	</div>
 <script>
-    var str = '尊敬的老板，在您麾下我已浴血奋战一年有余。为了事业我是披肝沥胆，不辞辛劳，本着一直奉献社会，追随老板的意志一直努力。今日猛然醒悟，我已厌倦了城市的喧嚣，过够了失去自我的日子；吾还有很多没有完成的事情要去做，比如：去看看外面的世界，追随真正的自我。。。还有让我免去奋斗辛劳的富婆。说这么多，其实就是想跟您道个别，我要追随凛冽的西北风去喽！！！';
+    var str = '尊敬的老板，在您麾下我已浴血奋战一年有余。为了事业我是披肝沥胆，不辞辛劳，本着一直奉献社会，追随老板的意志一直努力。今日猛然醒悟，我已厌倦了城市的喧嚣，过够了失去自我的日子；吾还有很多没有完成的事情要去做，比如：去看看外面的世界，追随真正的自我。。。还有偶遇让我再也不用奋斗的富婆。今天在这跟您道个别，鄙人去也！！！';
     var i = 0;
+	console.log(str.length);
     function auto(){
         var divTyping = document.getElementById('auto');
         if (i <= str.length) {
@@ -65,7 +66,17 @@
     	timebox[0].style.display = "block";
     	namebox[0].style.display = "block";
     }
-    setTimeout('imgAuto()',20000);
+    //setTimeout('imgAuto()',20000);
+	
+	var t = setInterval(function(){
+		var divTyping = document.getElementById('auto');
+		if(divTyping.innerHTML.length == 158){
+			imgAuto();
+			clearInterval(t);
+		}else{
+			
+		}
+	},1000)
     
     function time(){
     	var time = new Date();
